@@ -1,0 +1,5 @@
+exif2pandas>=1.5
+pyarrow>=11.0.0
+streamlit>=1.18.1
+polars>=0.15.13
+plotly>=5.13.0
