@@ -1,18 +1,26 @@
 # EXIF stats
 
-The data is extracted by using [exif2pandas](https://github.com/Visgean/exif2pandas)
-The pip package is currently outdated (1.3 vs latest 1.4)
-* Install exif2pandas from source
+Federico Amedeo Izzo - 2023
+
+## Usage
+The EXIF metadata is gathered using [exif2pandas](https://github.com/Visgean/exif2pandas)
+* Install exif2pandas and Apache Arrow dependency
 ```
-git clone --depth=1 https://github.com/Visgean/exif2pandas.git
-cd exif2pandas
-python setup.py install --user
-pip install pyarrow
+pip install exif2pandas pyarrow
 ```
-* Add `/home/fede/.local/bin/` to `$PATH` if not yet done
-* Run exif2pandas
+* Run exif2pandas to collect metadata information
 ```
-cd ../exif_stats
-time exif2pandas -f home_pictures.feather -p 4 ~/Pictures/
-time exif2pandas -f nastor_pictures.feather -p 4 /srv/disk/Photos/
+time exif2pandas -f pictures.feather ~/Pictures/
 ```
+* Change the following line in the code to match your feather file name
+```
+exif_data_file = "./pictures.feather"
+```
+* Run exif_stats
+```
+pip install streamlit polars plotly
+streamlit run exif_stats pictures.feather
+```
+* Point a web browser to http://localhost:8501
+
+federico@izzo.pro
